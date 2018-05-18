@@ -5,24 +5,57 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="col-md-8"></div>
-    <div class="collapse navbar-collapse  col-md-4" id="navbarCollapse">
+    <div class="col-md-1"></div>
+    <div class="collapse navbar-collapse col-md-10 justify-content-end" id="navbarCollapse">
       <ul class="navbar-nav">
         <li class="nav-item
           <% if @title == "Home" %>active
           <% end %>">
           <a class="nav-link" href="/">Home</a>
         </li>
-        <li class="nav-item
+        <% if !logged_in? %>
+          <li class="nav-item
           <% if @title == "SignUp" %>active
           <% end %>">
-          <a class="nav-link" href="<%= signup_path %>">SignUp</a>
-        </li>
-        <li class="nav-item
+            <a class="nav-link" href="<%= signup_path %>">SignUp</a>
+          </li>
+          <li class="nav-item
           <% if @title == "Login" %>active
           <% end %>">
-          <a class="nav-link" href="#">Login</a>
-        </li>
+            <a class="nav-link" href="<%= login_path %>">Login</a>
+          </li>
+        <% else %>
+          <li class="nav-item
+                  <% if @title == "Profile" %>active
+                  <% end %>">
+            <a class="nav-link" href="<%= user_path(current_user.id) %>">Profile</a>
+          </li>
+          <li class="nav-item
+                  <% if @title == "Logout" %>active
+                  <% end %>">
+            <a class="nav-link" href="<%= logout_path %>" data-method="delete">Logout</a>
+          </li>
+
+          <li class="orange">
+            <span class="glyphicon glyphicon-user"></span><%= current_user.email %>
+          </li>
+        <% end %>
+
+        <% if is_admin? %>
+          <li class="nav-item dropdown
+                  <% if @title == "Users" %>active
+                  <% end %>">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Admin
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="<%= users_path %>">Users</a>
+              <a class="dropdown-item" href="<%= mails_list_path %>">Mails</a>
+            </div>
+          </li>
+        <% end %>
+
+
       </ul>
     </div>
   </nav>

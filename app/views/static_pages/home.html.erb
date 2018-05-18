@@ -1,2 +1,10 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="text-center jumbotron">
+  <h1>Welcome to the User Control App</h1>
+  <h2>
+    This application can help you<br>
+    create user, view user, edit user, delete user,<br> mouse click, double mouse click...<br>
+    a lot of other cool stuff
+  </h2>
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %><br><br>
+  <%= image_tag("itcrowd.jpg", alt: "Rails logo") %>
+</div>

@@ -1,2 +1,17 @@
-<h1>Sign up</h1>
-<p>This will be a signup page for new users.</p>
+<form accept-charset="UTF-8" action="/users" class="form-signin text-center" id="new_user" method="post">
+  <img class="text-center" src="/assets/usrctrl01.jpg" width="100" height="100" alt="">
+  <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+  <%= render 'shared/error_messages' %>
+  <div style="margin:0;padding:0;display:inline">
+    <input name="utf8" type="hidden" value="&#x2713;" />
+    <input name="authenticity_token" type="hidden" value="BoX8CCBpGa+ZMHvnmMgstpNmNkPB8u3IqRel/o6mGZI=" />
+  </div>
+  <label for="user_email" class="sr-only">Email</label>
+  <input id="user_email" name="user[email]" type="email" class="form-control" placeholder="Email address" required autofocus/>
+  <label for="user_password" class="sr-only">Password</label>
+  <input id="user_password" name="user[password]" type="password" class="form-control" placeholder="Password" required/>
+  <label for="user_password_confirmation" class="sr-only">Confirmation</label>
+  <input id="user_password_confirmation" name="user[password_confirmation]" type="password" class="form-control" placeholder="Password confirmation" required />
+  <br>
+  <input class="btn btn-lg btn-primary btn-block" name="commit" type="submit" value="Create my account" />
+</form>

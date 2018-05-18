@@ -17,17 +17,25 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'bootstrap'
-
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-
+gem 'faker'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap4'
+gem 'bootstrap4-datetime-picker-rails'
+gem 'momentjs-rails'
+gem 'omniauth-facebook'
+gem 'devise'
+gem 'omniauth-twitter'
+gem 'twitter'
+gem 'fb_graph'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', '~>0.4.0', require: false
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'

@@ -1,0 +1,30 @@
+<h1 class="h3 mb-3 font-weight-normal">Update your profile</h1>
+<%= form_for(@user, :html => {:class => 'form-signin text-center'}) do |f| %>
+  <%= render 'shared/error_messages' %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.label :name, class: 'sr-only' %>
+      <%= f.text_field :name, class: 'form-control', placeholder: 'Name', autofocus: true %><br>
+      <%= f.label :phones, class: 'sr-only' %>
+      <%= f.text_field :phones, class: 'form-control', placeholder: 'Phone', title: 'International format' %><br>
+      <%= f.label :phone02, class: 'sr-only' %>
+      <%= f.text_field :phone02, class: 'form-control', placeholder: 'Additional phone', title: 'International format' %>
+      <br>
+    </div>
+    <div class="col-md-4">
+      <img class="avatar" src="<%= avatar(@user) %>" height="100"/>
+      <%= f.label :photo_file, class: 'sr-only' %>
+      <span class="btn btn-sm btn-primary btn-file">
+      Change <%= f.file_field :photo_file %>
+      </span>
+    </div>
+  </div>
+  <%= f.label :address, class: 'sr-only' %>
+  <%= f.text_field :address, class: 'form-control', placeholder: 'Address' %><br>
+  <%= f.label :password, class: 'sr-only' %>
+  <%= f.password_field :password, class: 'form-control', placeholder: 'New password' %><br>
+  <%= f.label :password_confirmation, class: 'sr-only' %>
+  <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password confirmation' %><br>
+  <%= f.submit "Save changes", class: "btn btn-primary" %>
+<% end %><br><br>
+

@@ -1,0 +1,12 @@
+<%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>
+
+<% @users.each do |user| %>
+    <tr>
+      <th> <a href="<%= user_path(user.id) %>"><%= user.id %></a> </th>
+      <td> <%= user.name %> </td>
+      <td> <%= user.email %> </td>
+      <td> <%= user.phones %> </td>
+      <td> <%= user.phone02 %> </td>
+      <td> <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %> </td>
+    </tr>
+  <% end %>

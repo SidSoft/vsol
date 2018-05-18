@@ -1,5 +1,17 @@
 Vsol::Application.routes.draw do
+  get "mails/new" => "mails#new"
+  get "mails/list" => "mails#list"
+  get '/login', to: "sessions#new"
+  post 'smails' => "mails#create"
+  delete "mails/delete/:id" => "mails#delete", as: 'mails/delete'
+  get "mails/send/:id" => "mails#scheduled_email", as: 'mails/send'
+  delete 'logout' => "sessions#destroy"
+  post '/login', to: "sessions#create"
   get '/signup', to: "users#new"
+  get '/sand', to: "sessions#sandbox"
+
+  resources :users
+  resources :account_activations, only: [:edit]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

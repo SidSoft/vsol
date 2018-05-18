@@ -1,0 +1,31 @@
+<h1>All users</h1>
+
+<%= form_tag users_path, :method => 'get' do %>
+  <%= hidden_field_tag :direction, params[:direction] %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+
+
+
+<div id="users" class="text-center">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col"><%= sortable "id", "#" %></th>
+      <th scope="col"><%= sortable "name" %><br><%= text_field_tag :search_name, params[:search_name], class: 'form-control dim' %></th>
+      <th scope="col"><%= sortable "email" %><br><%= text_field_tag :search_email, params[:search_email], class: 'form-control dim' %></th>
+      <th scope="col"><%= sortable "phones", "Phone01" %><br><%= text_field_tag :search_phones, params[:search_phones], class: 'form-control dim' %></th>
+      <th scope="col"><%= sortable "phone02" %><br><%= text_field_tag :search_phone02, params[:search_phone02], class: 'form-control dim' %></th>
+      <th scope="col"><%= submit_tag "Filter", :name => nil, class: 'btn btn-sm btn-success btn-block' %> </th>
+    </tr>
+    </thead>
+<% end %>
+    <tbody>
+    <%= render "users" %>
+    </tbody>
+  </table>
+</div>
+<script>
+    $(function(){
+        $('.pagination > a').attr('data-remote', 'true')
+    });
+</script>
