@@ -1,16 +1,21 @@
 Vsol::Application.routes.draw do
-  get "mails/new" => "mails#new"
-  get "mails/list" => "mails#list"
+  get "mails/list" => "smails#list"
   get '/login', to: "sessions#new"
-  post 'smails' => "mails#create"
-  delete "mails/delete/:id" => "mails#delete", as: 'mails/delete'
-  get "mails/send/:id" => "mails#scheduled_email", as: 'mails/send'
+  get "mails/send/:id" => "smails#delay_mail", as: 'mails/send'
   delete 'logout' => "sessions#destroy"
   post '/login', to: "sessions#create"
   get '/signup', to: "users#new"
   get '/sand', to: "sessions#sandbox"
+  get '/auth/:provider/callback', to: 'sessions#create_social'
+  get 'tsecret', to: "static_pages#top_secret"
+
+  DelayedJobWeb.use Rack::Auth::Basic do |username, password|
+    username == ENV['DJ_USER'] && password == ENV['DJ_PASS']
+    end
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, :via => [:get, :post]
 
   resources :users
+  resources :smails
   resources :account_activations, only: [:edit]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,9 +1,0 @@
-<% @smails.each do |smail| %>
-  <tr>
-    <th> <%= smail.id %></a> </th>
-    <td> <%= smail.message %> </td>
-    <td> <%= smail.scheduled_at %> </td>
-    <td> <%= link_to "delete", mails_delete_path(smail.id), method: :delete, data: { confirm: "You sure?" } %> </td>
-    <td> <%= link_to "send", mails_send_path(smail.id), method: :get, data: { confirm: "You sure?" } %> </td>
-  </tr>
-<% end %>

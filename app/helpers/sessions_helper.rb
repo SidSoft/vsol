@@ -5,6 +5,8 @@ module SessionsHelper
 
   def log_out
     session.delete(:user_id)
+    session.delete(:social_provider)
+    session.delete(:social_user)
     @current_user = nil
   end
 

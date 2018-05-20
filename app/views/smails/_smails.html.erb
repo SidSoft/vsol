@@ -1,0 +1,20 @@
+<% @smails.each do |smail| %>
+  <tr>
+    <th>
+      <% if smail.enqueued %>
+          <%= smail.id %>
+      <% else %>
+          <%= link_to smail.id, smail_path(smail.id), method: :get %> </th>
+      <% end %>
+    <td> <%= smail.message %> </td>
+    <td> <%= smail.scheduled_at %> </td>
+    <td> <%= link_to "delete", smail_path(smail.id), method: :delete, data: { confirm: "You sure?" } %> </td>
+    <td>
+      <% if smail.enqueued %>
+          enqueued
+      <% else %>
+          <%= link_to "send to queue", mails_send_path(smail.id), method: :get, data: { confirm: "You sure?" } %>
+      <% end %>
+        </td>
+  </tr>
+<% end %>

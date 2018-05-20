@@ -25,10 +25,11 @@ gem 'will_paginate-bootstrap4'
 gem 'bootstrap4-datetime-picker-rails'
 gem 'momentjs-rails'
 gem 'omniauth-facebook'
-gem 'devise'
 gem 'omniauth-twitter'
-gem 'twitter'
-gem 'fb_graph'
+gem "omniauth-google-oauth2"
+gem 'delayed_job_active_record'
+gem "delayed_job_web"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', '~>0.4.0', require: false
@@ -51,6 +52,7 @@ group :development, :test do
   gem 'sqlite3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'dotenv-rails'
 end
 
 group :test do

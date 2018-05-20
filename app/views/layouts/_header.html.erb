@@ -13,7 +13,12 @@
           <% end %>">
           <a class="nav-link" href="/">Home</a>
         </li>
-        <% if !logged_in? %>
+        <li class="nav-item
+          <% if @title == "Top Secret" %>active
+          <% end %>">
+          <a class="nav-link" href="<%= tsecret_path %>">Top Secret</a>
+        </li>
+        <% if !logged_in? && !social_user %>
           <li class="nav-item
           <% if @title == "SignUp" %>active
           <% end %>">
@@ -24,21 +29,30 @@
           <% end %>">
             <a class="nav-link" href="<%= login_path %>">Login</a>
           </li>
-        <% else %>
+        <% elsif logged_in? %>
           <li class="nav-item
                   <% if @title == "Profile" %>active
                   <% end %>">
             <a class="nav-link" href="<%= user_path(current_user.id) %>">Profile</a>
           </li>
           <li class="nav-item
-                  <% if @title == "Logout" %>active
-                  <% end %>">
+            <% if @title == "Logout" %>active
+            <% end %>">
             <a class="nav-link" href="<%= logout_path %>" data-method="delete">Logout</a>
           </li>
-
           <li class="orange">
             <span class="glyphicon glyphicon-user"></span><%= current_user.email %>
           </li>
+        <% elsif social_user %>
+          <li class="orange">
+            <i class="fa fa-<%= session[:social_icon] %>"></i>&nbsp;<%= social_user %>
+          </li>
+          <li class="nav-item
+            <% if @title == "Logout" %>active
+            <% end %>">
+            <a class="nav-link" href="<%= logout_path %>" data-method="delete">Logout</a>
+          </li>
+
         <% end %>
 
         <% if is_admin? %>

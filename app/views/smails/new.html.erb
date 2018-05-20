@@ -1,4 +1,4 @@
-<h1>Mails#new</h1>
+<h1>New Mail Task</h1>
 <%= render 'shared/smail_error_messages' %>
 <%= form_for(@smail, :html => {:class => 'form-signin text-center'}) do |f| %>
   <%= f.label :message, class: 'sr-only' %>
@@ -16,7 +16,7 @@
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker1').datetimepicker({
-            format: 'YYYY-MM-DD hh:mm:ss'
+            format: 'YYYY-MM-DD HH:mm:ss'
         });
     });
 </script>

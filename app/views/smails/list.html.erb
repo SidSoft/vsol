@@ -1,0 +1,25 @@
+<h1>Mail Tasks List</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">message</th>
+    <th scope="col">scheduled_at</th>
+    <th scope="col"> </th>
+    <th scope="col"> </th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render "smails" %>
+  </tbody>
+</table>
+<div class="row">
+  <div class="col-md-3">
+    <%= link_to "New Mail", new_smail_path, class: "btn btn-lg btn-primary" %>
+  </div>
+  <div class="col-md-7">
+  </div>
+  <div class="col-md-2 justify-content-end">
+    <%= link_to "Manage queue", '/delayed_job', method: :get, class: "btn btn-lg btn-success " %>
+  </div>
+</div>

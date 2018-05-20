@@ -22,6 +22,20 @@ class SessionsController < ApplicationController
     end
   end
 
+  def create_social
+    session[:social_provider] = auth_hash.provider
+    if auth_hash.provider == 'twitter'
+      session[:social_user] = auth_hash.info.nickname
+      session[:social_icon] = 'twitter'
+    elsif auth_hash.provider == 'google_oauth2'
+      session[:social_user] = auth_hash.info.name
+      session[:social_icon] = 'google-plus'
+    else
+      session[:social_user] = 'Social User'
+    end
+    redirect_to root_path
+  end
+
   def destroy
     log_out
     redirect_to root_url
@@ -29,7 +43,13 @@ class SessionsController < ApplicationController
 
   def sandbox
     @title = "Sandbox"
-    email = "vlad.dr.beer@gmail.com"
-    UserMailer.notification(email).deliver
+    run DelayedJobWeb
   end
+
+  protected
+
+  def auth_hash
+    request.env['omniauth.auth']
+  end
+
 end

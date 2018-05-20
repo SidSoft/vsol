@@ -6,5 +6,17 @@
   <%= f.label :password, class: 'sr-only' %>
   <%= f.password_field :password, class: 'form-control', placeholder: 'Password', required: true %>
   <br>
-  <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block" %>
+  <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block" %><br>
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to href: '/auth/twitter' do %>
+        <%= image_tag 'tlogin.png', height: "30", alt: 'Sign in with Twitter' %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= link_to href: '/auth/google_oauth2' do %>
+        <%= image_tag 'glogin.png', height: "30", alt: 'Sign in with Twitter' %>
+      <% end %>
+    </div>
+  </div>
 <% end %>
